@@ -11,6 +11,8 @@ import { Song } from '@/types';
 import { useUser } from '@/hooks/useUser';
 import Button from './Button';
 import useAuthModal from '@/hooks/useAuthModal';
+import usePlayer from '@/hooks/usePlayer';
+import { twMerge } from 'tailwind-merge';
 
 interface SidebarProps {
     children: React.ReactNode;
@@ -18,6 +20,8 @@ interface SidebarProps {
 }
 export const Sidebar: React.FC<SidebarProps> = ({ children, songs }) => {
     const pathname = usePathname();
+    const player = usePlayer();
+
     const { user } = useUser();
     const authModal = useAuthModal();
     const routes = useMemo(
@@ -38,7 +42,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ children, songs }) => {
         [pathname]
     );
     return (
-        <div className="h-full flex flex-col ">
+        <div
+            className={twMerge(
+                'h-full flex flex-col',
+                player.activeId && 'h-[calc(100%-80px)]'
+            )}
+        >
             <div className="flex flex-grow">
                 {/* {children} */}
                 <div className="hidden md:flex flex-col gap-y-2 bg-black h-full w-[300px] p-2">
