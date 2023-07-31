@@ -7,6 +7,7 @@ interface PageContentProps {
 }
 
 const PageContent: React.FC<PageContentProps> = ({ songs }) => {
+    // console.log(songs[0],'in pagecomtent')
     if (songs.length === 0)
         return <div className="mt-4 text-neutral-400">No songs available!</div>;
 

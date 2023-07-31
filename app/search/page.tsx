@@ -3,6 +3,8 @@ import Header from '@/components/Header';
 import SearchContents from '@/components/SearchContents';
 import SearchInput from '@/components/SearchInput';
 
+export const revalidate=0;
+
 interface SearchProps {
     searchParams: {
         title: string;
